@@ -8,6 +8,7 @@ jobs:
     steps:
       - checkout
       - run: npm ci
+      # Get latest complete build
       - nx/set-shas
 
       # Tell Nx Cloud to use DTE and stop agents when the build tasks are done
