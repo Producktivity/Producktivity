@@ -4,31 +4,64 @@ orbs:
 jobs:
   main:
     docker:
-      - image: cimg/node:lts-browsers
+      - image: node:20
     steps:
       - checkout
-      - run: npm ci
-      # Get latest complete build
+      - restore_cache:
+          name: Restore pnpm Package Cache
+          keys:
+            - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install pnpm package manager
+          command: |
+            corepack enable
+            corepack prepare pnpm@latest-8 --activate
+      - run:
+          name: Install Dependencies
+          command: |
+            pnpm install
+      - save_cache:
+          name: Save pnpm Package Cache
+          key: pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - node_modules
       - nx/set-shas
 
       # Tell Nx Cloud to use DTE and stop agents when the build tasks are done
-      - run: npx nx-cloud start-ci-run --stop-agents-after=build
+      - run: pnpm nx-cloud start-ci-run --stop-agents-after=build
       # Send logs to Nx Cloud for any CLI command
-      - run: npx nx-cloud record -- npx nx format:check
+      - run: pnpm nx-cloud record -- pnpm nx format:check
       # Lint, test and build on agent jobs everything affected by a change
-      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t lint,test,build --parallel=2 --configuration=ci
+      - run: pnpm nx affected --base=$NX_BASE --head=$NX_HEAD -t lint,test,build --parallel=2 --configuration=ci
   agent:
     docker:
-      - image: cimg/node:lts-browsers
+      - image: node:20
     parameters:
       ordinal:
         type: integer
     steps:
       - checkout
-      - run: npm ci
+      - restore_cache:
+          name: Restore pnpm Package Cache
+          keys:
+            - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install pnpm package manager
+          command: |
+            corepack enable
+            corepack prepare pnpm@latest-8 --activate
+      - run:
+          name: Install Dependencies
+          command: |
+            pnpm install
+      - save_cache:
+          name: Save pnpm Package Cache
+          key: pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - node_modules
       # Wait for instructions from Nx Cloud
       - run:
-          command: npx nx-cloud start-agent
+          command: pnpm nx-cloud start-agent
           no_output_timeout: 60m
 workflows:
   build:
