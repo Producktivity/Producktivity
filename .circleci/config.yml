@@ -27,9 +27,18 @@ jobs:
             - node_modules
       - nx/set-shas
 
-      - run: pnpm nx-cloud start-ci-run --stop-agents-after="build"
+      - run:
+          name: Initialize DTE agents
+          command: pnpm nx-cloud start-ci-run
 
-      - run: pnpm nx affected --base=$NX_BASE --head=$NX_HEAD -t lint,test,build --parallel=3 --configuration=ci
+      - run:
+          name: Run tasks in DTE
+          command: pnpm nx affected --base=$NX_BASE --head=$NX_HEAD -t lint,test,build --parallel=3 --configuration=ci
+
+      - run:
+          name: Stop all running agents for this CI run
+          when: always
+          command: pnpm nx-cloud stop-all-agents
   agent:
     docker:
       - image: node:20
