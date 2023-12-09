@@ -39,3 +39,25 @@ testem.log
 Thumbs.db
 
 .nx/cache
+
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Logs
+logs
+*.log
+
+# Misc
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
+nx-cloud.env

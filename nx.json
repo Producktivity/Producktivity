@@ -34,5 +34,6 @@
       "!{projectRoot}/tsconfig.spec.json"
     ],
     "sharedGlobals": []
-  }
+  },
+  "accessToken": "MjFjYmY3ODAtOGNlOS00YmFmLWE3NjktYzU2MjMyOTc1YWMyfHJlYWQ="
 }

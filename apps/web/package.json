@@ -1,0 +1,27 @@
+{
+  "name": "web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "nx": {
+    "tags": ["scope:web"],
+    "implicitDependencies": ["tag:scope:web"],
+    "projectType": "application",
+    "sourceRoot": "apps/web/src",
+    "targets": {
+      "build": {
+        "options": {
+          "outputPath": "dist/apps/web",
+          "skipTypeCheck": true
+        },
+        "outputs": ["{options.outputPath}", "{projectRoot}/.nuxt"]
+      }
+    }
+  }
+}
