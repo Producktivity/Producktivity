@@ -1,3 +1,3 @@
 <template>
-  <p>Hello World</p>
+  <p>Producktivity</p>
 </template>
