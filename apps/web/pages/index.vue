@@ -1,3 +1,3 @@
 <template>
-  <p>Producktivity Certificate Generator</p>
+  <p>Producktivity</p>
 </template>
