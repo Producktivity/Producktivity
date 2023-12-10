@@ -2,6 +2,37 @@ import { defineNuxtConfig } from 'nuxt/config';
 import { join } from 'path';
 import { workspaceRoot } from '@nx/devkit';
 
+export default defineNuxtConfig({
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+    },
+  },
+  devtools: { enabled: true },
+  nitro: {
+    preset: 'cloudflare-pages',
+    output: {
+      dir: '../../dist/apps/web',
+    },
+  },
+  vite: {
+    cacheDir: '../../node_modules/.vite/web',
+    preview: {
+      port: 4200,
+      host: 'localhost',
+    },
+  },
+  typescript: {
+    typeCheck: true,
+  },
+  /**
+   * aliases set here will be added to the auto generate tsconfig by Nuxt
+   * https://nuxt.com/docs/guide/directory-structure/tsconfig
+   **/
+  alias: getMonorepoTsConfigPaths('../../tsconfig.base.json'),
+});
+
 /**
  * read the compilerOptions.paths option from a tsconfig and return as aliases for Nuxt
  **/
@@ -25,28 +56,3 @@ function getMonorepoTsConfigPaths(tsConfigPath: string) {
 
   return alias;
 }
-
-export default defineNuxtConfig({
-  /**
-   * aliases set here will be added to the auto generate tsconfig by Nuxt
-   * https://nuxt.com/docs/guide/directory-structure/tsconfig
-   **/
-  alias: getMonorepoTsConfigPaths('../../tsconfig.base.json'),
-  devtools: { enabled: true },
-  nitro: {
-    preset: 'cloudflare-pages',
-    output: {
-      dir: '../../dist/apps/web',
-    },
-  },
-  vite: {
-    cacheDir: '../../node_modules/.vite/web',
-    preview: {
-      port: 4200,
-      host: 'localhost',
-    },
-  },
-  typescript: {
-    typeCheck: true,
-  },
-});
