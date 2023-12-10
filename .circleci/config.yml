@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Post Stats to GitHub PR
           command: |
-            if [ $(pnpm nx show projects --affected -p "web") != "web" ]; then
+            if [ $(pnpm nx show projects --affected -p "web") == "web" ]; then
               pr_response=$(curl --location --request GET "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/pulls?head=$CIRCLE_PROJECT_USERNAME:$CIRCLE_BRANCH&state=open" -u $GH_USERNAME:$GH_TOKEN)
 
               if [ $(echo $pr_response | jq length) -eq 0 ]; then
