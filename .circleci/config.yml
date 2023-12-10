@@ -7,6 +7,8 @@ jobs:
     docker:
       - image: node:20
     steps:
+      - jq/install:
+          version: jq-1.7
       - checkout
       - restore_cache:
           name: Restore pnpm Package Cache
