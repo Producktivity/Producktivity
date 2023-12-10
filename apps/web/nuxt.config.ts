@@ -34,6 +34,7 @@ export default defineNuxtConfig({
   alias: getMonorepoTsConfigPaths('../../tsconfig.base.json'),
   devtools: { enabled: true },
   nitro: {
+    preset: 'cloudflare-pages',
     output: {
       dir: '../../dist/apps/web',
     },
