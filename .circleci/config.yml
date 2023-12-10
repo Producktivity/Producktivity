@@ -61,7 +61,7 @@ jobs:
             -u $GH_USERNAME:$GH_TOKEN \
             --header 'Content-Type: application/json' \
             --data-raw '{
-              "body": "**Preview URL**: $url_response"
+              "body": "**Preview URL**: $($url_response)"
             }'
   agent:
     docker:
