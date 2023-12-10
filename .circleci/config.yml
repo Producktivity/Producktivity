@@ -65,7 +65,6 @@ jobs:
           key: pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
           paths:
             - node_modules
-      # Wait for instructions from Nx Cloud
       - run:
           name: Run DTE tasks
           command: pnpm nx-cloud start-agent
