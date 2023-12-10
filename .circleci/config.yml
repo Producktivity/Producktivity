@@ -56,18 +56,20 @@ jobs:
                 echo "No PR found to update"
               else
                 pr_comment_url=$(echo $pr_response | jq -r ".[]._links.comments.href")
+
+                url_response=$(curl -H 'Authorization: Bearer $CLOUDFLARE_API_TOKEN' 'https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$CLOUDFLARE_PAGES_PROJECT_NAME/deployments' | jq -r '.result[0].url')
+
+                echo $url_response
+
+                body=$(printf "**Preview URL**: %s" $url_response)
+
+                curl --location --request POST "$pr_comment_url" \
+                -u $GH_USERNAME:$GH_TOKEN \
+                --header 'Content-Type: application/json' \
+                --data-raw "{
+                  \"body\": \"$body\"
+                }"
               fi
-
-              url_response=$(curl -H 'Authorization: Bearer $CLOUDFLARE_API_TOKEN' 'https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$CLOUDFLARE_PAGES_PROJECT_NAME/deployments' | jq -r '.result[0].url')
-
-              body=$(printf "**Preview URL**: %s" $url_response)
-
-              curl --location --request POST "$pr_comment_url" \
-              -u $GH_USERNAME:$GH_TOKEN \
-              --header 'Content-Type: application/json' \
-              --data-raw "{
-                \"body\": \"$body\"
-              }"
             else
               echo "Not a web deployments"
             fi
