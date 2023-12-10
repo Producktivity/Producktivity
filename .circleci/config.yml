@@ -62,9 +62,9 @@ jobs:
             curl --location --request POST "$pr_comment_url" \
             -u $GH_USERNAME:$GH_TOKEN \
             --header 'Content-Type: application/json' \
-            --data-raw '{
-              "body": $body
-            }'
+            --data-raw "{
+              \"body\": \"$body\"
+            }"
   agent:
     docker:
       - image: node:20
