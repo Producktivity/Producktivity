@@ -57,20 +57,11 @@ jobs:
 
             url_response=$(curl -H 'Authorization: Bearer $CLOUDFLARE_API_TOKEN' 'https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$CLOUDFLARE_PAGES_PROJECT_NAME/deployments' | jq -r '.result[0].url')
 
-            read -r -d '' body \<< EOM
-            # Deploying with Cloudflare Pages
-
-            | Name                    | Result |
-            | ----------------------- | - |
-            | **Preview URL**:        | $url_response |
-            EOM
-
-
             curl --location --request POST "$pr_comment_url" \
             -u $GH_USERNAME:$GH_TOKEN \
             --header 'Content-Type: application/json' \
             --data-raw '{
-              "body": "$body"
+              "body": "**Preview URL**: $url_response"
             }'
   agent:
     docker:
