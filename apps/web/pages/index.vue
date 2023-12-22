@@ -4,7 +4,7 @@ const count = ref(0);
 </script>
 
 <template>
-  <Typography variant="title" bold>Producktivity 🪿</Typography>
+  <Typography variant="title" bold>🪿 Producktivity 🪿</Typography>
   <Button label="Click Me!" @click="() => count++" />
   <Typography variant="base">นับการคลิ๊กมาแล้ว {{ count }} ครั้ง✨</Typography>
 </template>
