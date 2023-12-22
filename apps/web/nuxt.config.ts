@@ -5,7 +5,6 @@ import { workspaceRoot } from '@nx/devkit';
 export default defineNuxtConfig({
   modules: ['@nuxtjs/google-fonts'],
   googleFonts: {
-    download: true,
     families: {
       Inter: [400, 700],
       'Noto Sans Thai Looped': [400, 700],
