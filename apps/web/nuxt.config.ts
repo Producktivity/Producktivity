@@ -3,13 +3,6 @@ import { join } from 'path';
 import { workspaceRoot } from '@nx/devkit';
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/google-fonts'],
-  googleFonts: {
-    families: {
-      Inter: [400, 700],
-      'Noto Sans Thai Looped': [400, 700],
-    },
-  },
   css: ['@producktivity/ui/style.css'],
   experimental: {
     componentIslands: true,
@@ -17,6 +10,11 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      link: [
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
+        { rel: 'preload', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+Thai+Looped:wght@400;700&display=optional', media: 'all', as: 'style', onload: 'this.onload=null;this.rel="stylesheet"' },
+      ],
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
     },
