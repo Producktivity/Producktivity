@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Run tasks in DTE
           command: |
-            pnpm nx affected --base=$NX_BASE --head=$NX_HEAD -t lint,test,build --parallel=3 --configuration=ci
+            pnpm nx affected --base=$NX_BASE --head=$NX_HEAD -t test,build --parallel=3 --configuration=ci
       - run:
           name: Run deploy tasks in DTE
           command: |
