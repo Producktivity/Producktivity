@@ -1,26 +1,26 @@
-import { defineNuxtConfig } from 'nuxt/config';
-import { join } from 'path';
-import { workspaceRoot } from '@nx/devkit';
+import { defineNuxtConfig } from "nuxt/config";
+import { join } from "path";
+import { workspaceRoot } from "@nx/devkit";
 
 export default defineNuxtConfig({
   app: {
     head: {
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
     },
   },
   devtools: { enabled: true },
   nitro: {
-    preset: 'cloudflare-pages',
+    preset: "cloudflare-pages",
     output: {
-      dir: '../../dist/apps/web',
+      dir: "../../dist/apps/web",
     },
   },
   vite: {
-    cacheDir: '../../node_modules/.vite/web',
+    cacheDir: "../../node_modules/.vite/apps/web",
     preview: {
       port: 4200,
-      host: 'localhost',
+      host: "localhost",
     },
   },
   typescript: {
@@ -30,7 +30,7 @@ export default defineNuxtConfig({
    * aliases set here will be added to the auto generate tsconfig by Nuxt
    * https://nuxt.com/docs/guide/directory-structure/tsconfig
    **/
-  alias: getMonorepoTsConfigPaths('../../tsconfig.base.json'),
+  alias: getMonorepoTsConfigPaths("../../tsconfig.base.json"),
 });
 
 /**
@@ -47,9 +47,9 @@ function getMonorepoTsConfigPaths(tsConfigPath: string) {
   if (tsPaths) {
     for (const p in tsPaths) {
       // '@org/something/*': ['libs/something/src/*'] => '@org/something': '{pathToWorkspaceRoot}/libs/something/src'
-      alias[p.replace(/\/\*$/, '')] = join(
+      alias[p.replace(/\/\*$/, "")] = join(
         workspaceRoot,
-        tsPaths[p][0].replace(/\/\*$/, '')
+        tsPaths[p][0].replace(/\/\*$/, ""),
       );
     }
   }

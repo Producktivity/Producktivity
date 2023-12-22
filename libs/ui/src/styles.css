@@ -1,0 +1,6 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/noto-sans-thai";
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";

@@ -11,18 +11,25 @@
     "deploy": "wrangler pages deploy ../../dist/apps/web"
   },
   "nx": {
-    "tags": ["scope:web"],
-    "implicitDependencies": ["tag:scope:web"],
+    "tags": [
+      "scope:web"
+    ],
     "projectType": "application",
-    "sourceRoot": "apps/web/src",
+    "sourceRoot": "apps/web",
     "targets": {
       "build": {
-        "inputs": ["{projectRoot}/**/*", "!{projectRoot}/**/*.md"],
+        "inputs": [
+          "{projectRoot}/**/*",
+          "!{projectRoot}/**/*.md"
+        ],
         "options": {
           "outputPath": "dist/apps/web",
           "skipTypeCheck": true
         },
-        "outputs": ["{options.outputPath}", "{projectRoot}/.nuxt"]
+        "outputs": [
+          "{options.outputPath}",
+          "{projectRoot}/.nuxt"
+        ]
       }
     }
   }
