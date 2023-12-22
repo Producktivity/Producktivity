@@ -7,7 +7,7 @@ export default {
   darkMode: ["class", '[data-mode="dark"]'],
   theme: {
     fontFamily: {
-      sans: ["Inter Variable", "Noto Sans Thai Variable", ...fontFamily.sans],
+      sans: ["Inter", "Noto Sans Thai Looped", ...fontFamily.sans],
     },
     extend: {},
   },

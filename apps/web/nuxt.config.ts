@@ -3,6 +3,15 @@ import { join } from 'path';
 import { workspaceRoot } from '@nx/devkit';
 
 export default defineNuxtConfig({
+  modules: ['@nuxtjs/google-fonts'],
+  googleFonts: {
+    download: true,
+    fontsPath: 'fonts',
+    families: {
+      Inter: [400, 700],
+      'Noto Sans Thai Looped': [400, 700],
+    },
+  },
   css: ['@producktivity/ui/style.css'],
   experimental: {
     componentIslands: true,
