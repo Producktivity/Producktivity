@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { BaseButton } from "@producktivity/ui";
+import { Button, Typography } from "@producktivity/ui";
 </script>
 
 <template>
-  <p>Producktivity 🪿</p>
-  <BaseButton label="Click Me!" />
+  <Typography variant="title" bold>Producktivity 🪿</Typography>
+  <Button label="Click Me!" />
 </template>
