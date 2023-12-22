@@ -6,5 +6,5 @@ const count = ref(0);
 <template>
   <Typography variant="title" bold>Producktivity 🪿</Typography>
   <Button label="Click Me!" @click="() => count++" />
-  <Typography variant="base">นับการคลิ๊กมาแล้ว {{ count }} ครั้ง</Typography>
+  <Typography variant="base">นับการคลิ๊กมาแล้ว {{ count }} ครั้ง✨</Typography>
 </template>
