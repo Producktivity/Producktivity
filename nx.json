@@ -27,6 +27,15 @@
     "@nx/vite:test": {
       "cache": true,
       "inputs": ["default", "^production"]
+    },
+    "build-storybook": {
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        "{projectRoot}/.storybook/**/*",
+        "{projectRoot}/tsconfig.storybook.json"
+      ]
     }
   },
   "namedInputs": {
@@ -36,9 +45,19 @@
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/eslint.config.js",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json"
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/tsconfig.storybook.json"
     ],
     "sharedGlobals": []
   },
-  "accessToken": "MjFjYmY3ODAtOGNlOS00YmFmLWE3NjktYzU2MjMyOTc1YWMyfHJlYWQ="
+  "accessToken": "MjFjYmY3ODAtOGNlOS00YmFmLWE3NjktYzU2MjMyOTc1YWMyfHJlYWQ=",
+  "tasksRunnerOptions": {
+    "default": {
+      "options": {
+        "cacheableOperations": ["build-storybook"]
+      }
+    }
+  }
 }
