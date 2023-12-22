@@ -11,13 +11,19 @@
     "deploy": "wrangler pages deploy ../../dist/apps/web"
   },
   "nx": {
-    "tags": [
-      "scope:web"
+    "implicitDependencies": [
+      "ui"
     ],
     "projectType": "application",
     "sourceRoot": "apps/web",
     "targets": {
       "build": {
+        "dependsOn": [
+          {
+            "projects": "ui",
+            "target": "build"
+          }
+        ],
         "inputs": [
           "{projectRoot}/**/*",
           "!{projectRoot}/**/*.md"
