@@ -3,6 +3,7 @@ import { join } from 'path';
 import { workspaceRoot } from '@nx/devkit';
 
 export default defineNuxtConfig({
+  css: ['@producktivity/ui/style.css'],
   experimental: {
     componentIslands: true,
   },
