@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
   <button
     class="text-white rounded-lg"
     :class="[
-      props.disabled ? 'bg-gray-500 hover:cursor-default' : 'bg-blue-500',
+      props.disabled ? 'bg-gray-500 hover:cursor-default' : 'bg-blue-700',
       sizes[props.size],
     ]"
   >
