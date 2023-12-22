@@ -1,17 +1,24 @@
 <script setup lang="ts">
+import { sizes } from "./button";
+import type { ButtonSize } from "./button";
+
 interface Props {
   label: string;
   disabled?: boolean;
+  size?: ButtonSize;
 }
 
-const props = withDefaults(defineProps<Props>(), {});
+const props = withDefaults(defineProps<Props>(), {
+  size: "base",
+});
 </script>
 
 <template>
   <button
-    class="px-4 py-2 text-white rounded-lg"
+    class="text-white rounded-lg"
     :class="[
       props.disabled ? 'bg-gray-500 hover:cursor-default' : 'bg-blue-500',
+      sizes[props.size],
     ]"
   >
     {{ props.label }}

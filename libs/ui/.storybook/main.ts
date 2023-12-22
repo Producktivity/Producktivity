@@ -6,6 +6,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-themes",
+    "storybook-addon-vue-slots",
   ],
   framework: {
     name: "@storybook/vue3-vite",
@@ -17,6 +18,10 @@ const config: StorybookConfig = {
   },
   core: {
     disableTelemetry: true,
+  },
+  docs: {
+    autodocs: "tag",
+    defaultName: "Documentation",
   },
 };
 
