@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'preload', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+Thai+Looped:wght@400;700&display=optional', media: 'all', as: 'style', onload: 'this.onload=null;this.rel="stylesheet"' },
+        { rel: 'preload', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+Thai+Looped:wght@400;700&display=optional', media: 'all', as: 'style', onload: 'this.onload=null;this.rel="stylesheet"', crossorigin: 'anonymous' },
       ],
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
