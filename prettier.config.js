@@ -1,5 +1,5 @@
 /** @type {import('prettier').Config} */
-export default {
+module.exports = {
   printWidth: Infinity,
   semi: true,
   useTabs: false,
