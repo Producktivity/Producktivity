@@ -35,11 +35,11 @@ jobs:
       - run:
           name: Run tasks in DTE
           command: |
-            pnpm nx affected --base=$NX_BASE -t build --parallel=3 --configuration=ci
+            pnpm nx affected --base=$NX_BASE --head=$NX_HEAD -t build --parallel=3 --configuration=ci
       - run:
           name: Run deploy tasks in DTE
           command: |
-            pnpm nx affected --base=$NX_BASE -t deploy --parallel=3 --configuration=ci -- --project-name=$CLOUDFLARE_PAGES_PROJECT_NAME --branch=$CIRCLE_BRANCH
+            pnpm nx affected --base=$NX_BASE --head=$NX_HEAD -t deploy --parallel=3 --configuration=ci -- --project-name=$CLOUDFLARE_PAGES_PROJECT_NAME --branch=$CIRCLE_BRANCH
       - run:
           name: Stop all running agents for this CI run
           when: always
