@@ -6,7 +6,6 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/google-fonts'],
   googleFonts: {
     download: true,
-    fontsPath: 'fonts',
     families: {
       Inter: [400, 700],
       'Noto Sans Thai Looped': [400, 700],
@@ -15,6 +14,7 @@ export default defineNuxtConfig({
   css: ['@producktivity/ui/style.css'],
   experimental: {
     componentIslands: true,
+    asyncEntry: true,
   },
   app: {
     head: {
