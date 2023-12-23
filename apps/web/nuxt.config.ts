@@ -3,6 +3,7 @@ import { join } from 'path';
 import { workspaceRoot } from '@nx/devkit';
 
 export default defineNuxtConfig({
+  modules: ['@vite-pwa/nuxt'],
   css: ['@producktivity/ui/style.css'],
   experimental: {
     componentIslands: true,
@@ -17,6 +18,78 @@ export default defineNuxtConfig({
       ],
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
+      meta: [{ name: 'theme-color', content: '#ffffff' }],
+    },
+  },
+  pwa: {
+    registerType: 'autoUpdate',
+    manifest: {
+      name: 'Certificate Generator',
+      short_name: 'Certificate Generator',
+      description: 'A complete certificate generator',
+      lang: 'en',
+      theme_color: '#ffffff',
+      background_color: '#ffffff',
+      display: 'standalone',
+      icons: [
+        {
+          src: 'icons/pwa-64x64.png',
+          sizes: '64x64',
+          type: 'image/png',
+        },
+        {
+          src: 'icons/pwa-72x72.png',
+          sizes: '72x72',
+          type: 'image/png',
+        },
+        {
+          src: 'icons/pwa-96x96.png',
+          sizes: '96x96',
+          type: 'image/png',
+        },
+        {
+          src: 'icons/pwa-128x128.png',
+          sizes: '128x128',
+          type: 'image/png',
+        },
+        {
+          src: 'icons/pwa-144x144.png',
+          sizes: '144x144',
+          type: 'image/png',
+        },
+        {
+          src: 'icons/pwa-152x152.png',
+          sizes: '152x152',
+          type: 'image/png',
+        },
+        {
+          src: 'icons/pwa-192x192.png',
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          src: 'icons/pwa-384x384.png',
+          sizes: '384x384',
+          type: 'image/png',
+        },
+        {
+          src: 'icons/pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'any',
+        },
+        {
+          src: 'icons/maskable-icon-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'maskable',
+        },
+        {
+          src: 'icons/apple-touch-icon-180x180.png',
+          sizes: '180x180',
+          type: 'image/png',
+        },
+      ],
     },
   },
   devtools: { enabled: true },

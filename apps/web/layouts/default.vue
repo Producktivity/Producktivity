@@ -1,7 +1,3 @@
-<template>
-  <slot />
-</template>
-
 <script setup lang="ts">
 const route = useRoute();
 
@@ -10,6 +6,13 @@ useHead({
     lang: 'en',
   },
   title: route.meta.title ? `${route.meta.title} - Certificate Generator` : `Certificate Generator`,
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: '/favicon-192x192.ico',
+    },
+  ],
   meta: [
     {
       property: 'og:title',
@@ -26,3 +29,7 @@ useHead({
   ],
 });
 </script>
+
+<template>
+  <slot />
+</template>
