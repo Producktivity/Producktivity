@@ -10,7 +10,14 @@ useHead({
     {
       rel: 'icon',
       type: 'image/png',
-      href: '/favicon-192x192.ico',
+      href: 'icons/favicon.ico',
+      sizes: '32x32',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: 'icons/favicon-192x192.ico',
+      sizes: '192x192',
     },
   ],
   meta: [
