@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import { sizes } from "./button";
-import type { ButtonSize } from "./button";
+import { sizes, variants, shapes } from './button';
+import type { ButtonSize, ButtonVariant, ButtonShape } from './button';
 
 interface Props {
-  label: string;
   disabled?: boolean;
   size?: ButtonSize;
+  variant?: ButtonVariant;
+  shape?: ButtonShape;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  size: "base",
+  size: 'base',
+  variant: 'primary',
+  shape: 'base',
 });
 </script>
 
 <template>
-  <button
-    class="text-white rounded-lg"
-    :class="[
-      props.disabled ? 'bg-gray-500 hover:cursor-default' : 'bg-blue-700',
-      sizes[props.size],
-    ]"
-  >
-    {{ props.label }}
-  </button>
+  <div class="relative inline-flex">
+    <div class="before:hover:bg-surface-on/[.08] before:inset-0 before:absolute absolute inset-0 overflow-hidden" />
+    <button :class="[variants[props.disabled ? 'disabled' : props.variant], sizes[props.size], shapes[props.shape]]">
+      <slot />
+    </button>
+  </div>
 </template>

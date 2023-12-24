@@ -1,16 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import Button from './Button.vue';
-import { sizes } from './button';
+import { sizes, variants, shapes } from './button';
 
 const meta = {
   component: Button,
   title: 'Button',
   tags: ['autodocs'],
-  argTypes: {
-    label: {
-      description: 'Button label',
-      control: { type: 'text' },
+  parameters: {
+    slots: {
+      default: {
+        description: 'Data to display',
+        type: 'text',
+      },
     },
+  },
+  argTypes: {
     disabled: {
       description: 'Button disabled',
       control: { type: 'boolean' },
@@ -18,6 +22,16 @@ const meta = {
     size: {
       description: 'Button size',
       options: Object.keys(sizes),
+      control: { type: 'inline-radio' },
+    },
+    variant: {
+      description: 'Button variant',
+      options: Object.keys(variants).filter((v) => v !== 'disabled'),
+      control: { type: 'inline-radio' },
+    },
+    shape: {
+      description: 'Button shape',
+      options: Object.keys(shapes),
       control: { type: 'inline-radio' },
     },
   },
@@ -28,8 +42,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    label: 'Getting Started',
+    default: 'Getting Started',
     disabled: false,
     size: 'base',
+    variant: 'primary',
+    shape: 'base',
   },
 };
